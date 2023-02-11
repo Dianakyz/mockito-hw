@@ -6,7 +6,7 @@ import java.util.*;
 
 public class UserRepository {
 
-    private final List<User> users = new ArrayList<>();
+    private final Collection<User> users = new ArrayList<>();
 
     public Collection<User> getAllUsers() {
         return Collections.unmodifiableCollection(users);
@@ -20,7 +20,8 @@ public class UserRepository {
         return this.users.stream().filter(user -> user.getLogin().equals(login)).filter(user -> user.getPassword().equals(password)).findAny();
     }
 
-    public void addUser(User user) {
+    public User addUser(User user) {
         this.users.add(user);
+        return user;
     }
 }
